@@ -10,8 +10,8 @@ The following animation demonstrates the application functionality:
 ![A user clicks on slots on the color-coded calendar and edits the events.](./assets/images/05-third-party-apis-homework-demo.gif)
 
 # Deployment
-- The URL of the deployed application:
-- The URL of the GitHub repository, with unique name and README.md:
+- The URL of the deployed application: https://portmeister.github.io/work_day_scheduler/.
+- The URL of the GitHub repository, with unique name and README.md: https://github.com/Portmeister/work_day_scheduler
 
 # Contributors
 - Base css & html provided by © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
