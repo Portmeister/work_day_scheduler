@@ -74,7 +74,7 @@ var myDay = [
 
 // Function for the Header Date
 function getHeaderDate() {
-    var currentHeaderDate = moment().format("dddd, MMMM do");
+    var currentHeaderDate = moment().format('dddd, MMMM Do');
     $("#currentDay").text(currentHeaderDate);
 }
 
@@ -85,7 +85,7 @@ function saveReminders() {
 
 // Displays information in local storage
 function displayReminders() {
-    myDay.forEach(function(_thisHour) {
+    myDay.forEach(function (_thisHour) {
         $(`#${_thisHour.id}`).val(_thisHour.reminder);
     })
 }
@@ -106,9 +106,7 @@ getHeaderDate();
 // Creates elements for scheduler
 myDay.forEach(function(thisHour) {
     // Creates Timeblocks
-    var hourRow = $("<form>").attr({
-        "class": "row"
-    });
+    var hourRow = $("<form>").attr({"class": "row"});
     $(".container").append(hourRow);
     // Creates Time field
     var hourField = $("<div>").text(`${thisHour.hour}${thisHour.meridiem}`).attr({"class": "col-md-2 hour"});
@@ -117,7 +115,7 @@ myDay.forEach(function(thisHour) {
     var planData = $("<textarea>");
     hourPlan.append(planData);
     planData.attr("id", thisHour.id);
-    if (thisHour.time < moment().formatt("HH")) {
+    if (thisHour.time < moment().format("HH")) {
         planData.attr({"class": "past"});
     } else if (thisHour.time === moment().format("HH")) {
         planData.attr({"class": "present"});
@@ -135,3 +133,12 @@ myDay.forEach(function(thisHour) {
 // Loads any existing localStorage data after elements are created
 init();
 
+// Saves information to be used in localStorage
+$(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+    var saveIndex = $(this).siblings(".description").children(".future").attr("id");
+    myDay[saveIndex].reminder = $(this).siblings(".description").children(".future").val();
+    console.log(saveIndex);
+    saveReminders();
+    displayReminders();
+})
