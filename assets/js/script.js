@@ -72,3 +72,20 @@ var myDay = [
     }
 ]
 
+// Function for the Header Date
+function getHeaderDate() {
+    var currentHeaderDate = moment().format("dddd, MMMM do");
+    $("#currentDay").text(currentHeaderDate);
+}
+
+// Save info to local storage
+function saveReminders() {
+    localStorage.setItem("myDay", JSON.stringify(myDay));
+}
+
+//Displays information in local storage
+function displayReminders() {
+    myDay.forEach(function(_thisHour) {
+        $(`#${_thisHour.id}`).val(_thisHour.reminder);
+    })
+}
